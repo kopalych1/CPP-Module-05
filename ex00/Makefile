@@ -6,7 +6,7 @@
 #    By: akostian <akostian@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/26 16:43:30 by akostian          #+#    #+#              #
-#    Updated: 2025/06/16 14:25:43 by akostian         ###   ########.fr        #
+#    Updated: 2025/06/24 12:07:11 by akostian         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,8 @@ fclean:
 #
 
 re:
-	@$(MAKE) -s fclean
-	@$(MAKE) all
+	@$(MAKE) --no-print-directory fclean
+	@$(MAKE) --no-print-directory all
 #
 
 
