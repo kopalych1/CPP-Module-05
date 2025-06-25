@@ -6,7 +6,7 @@
 /*   By: akostian <akostian@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 12:27:10 by akostian          #+#    #+#             */
-/*   Updated: 2025/06/24 12:59:10 by akostian         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:31:48 by akostian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define CRESET "\033[0m"
 
 # include <iostream>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -56,6 +59,8 @@ class Bureaucrat {
 		void	incrementGrade(unsigned int value);
 		void	decrementGrade(void);
 		void	decrementGrade(unsigned int value);
+
+		void	signForm(Form &form);
 
 		friend std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
