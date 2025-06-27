@@ -6,7 +6,7 @@
 /*   By: akostian <akostian@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:38:54 by akostian          #+#    #+#             */
-/*   Updated: 2025/06/27 17:34:53 by akostian         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:40:08 by akostian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,44 @@ int main()
 	{
 		printTestN();
 
-		Bureaucrat("IVAN", 54).executeForm(ShrubberyCreationForm("forms/form"));
+		ShrubberyCreationForm	form;
 
-		std::cout << "Not enough grade:" << "\n";
-		Bureaucrat("_", 150).executeForm(ShrubberyCreationForm("1"));
+		std::cout << "Not signed: " << "\n";
+		Bureaucrat("_", 1).executeForm(form);
 	}
 	{
 		printTestN();
+
+		ShrubberyCreationForm	form("forms/garden");
+		Bureaucrat("_", 1).signForm(form);
+
+		std::cout << "Grade too low:" << "\n";
+		Bureaucrat("_", 150).executeForm(form);
+
+		Bureaucrat("_", 1).executeForm(form);
+	}
+	{
+		printTestN();
+
+		RobotomyRequestForm	form("me");
+		Bureaucrat("_", 1).signForm(form);
 
 		for (short i = 0; i < 4; i++)
-			Bureaucrat("123", 33).executeForm(RobotomyRequestForm("me"));
+			Bureaucrat("123", 33).executeForm(form);
 
-		Bureaucrat("Bad doctor", 130).executeForm(RobotomyRequestForm("me"));
+		Bureaucrat("Bad doctor", 130).executeForm(form);
 	}
 	{
 		printTestN();
 
-		Bureaucrat("Queen", 1).executeForm(PresidentialPardonForm("knight"));
+		PresidentialPardonForm	form1("knight");
+		PresidentialPardonForm	form2("me");
 
-		Bureaucrat("peasant", 130).executeForm(PresidentialPardonForm("me"));
+		Bureaucrat("_", 26).signForm(form1);
+		Bureaucrat("_", 1).signForm(form1);
+		Bureaucrat("_", 1).signForm(form2);
+
+		Bureaucrat("Queen", 1).executeForm(form1);
+		Bureaucrat("peasant", 130).executeForm(form2);
 	}
 }

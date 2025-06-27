@@ -6,7 +6,7 @@
 /*   By: akostian <akostian@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:42:17 by akostian          #+#    #+#             */
-/*   Updated: 2025/06/27 17:26:45 by akostian         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:34:12 by akostian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static bool	fifty_fifty_gen(void)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
+	if (!this->GetSigned())
+		throw AForm::FormNotSignedExeption();
 	if (executor.GetGrade() > this->GetExecGrade())
 		throw AForm::GradeTooLowException();
 

@@ -6,7 +6,7 @@
 /*   By: akostian <akostian@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:42:05 by akostian          #+#    #+#             */
-/*   Updated: 2025/06/27 16:41:22 by akostian         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:02:50 by akostian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,13 @@ class AForm {
 				const char *what() const throw(){
 					return COLORED ? BLU "Grade" CRESET " is " RED "too low" CRESET :
 					"Grade is too low";
+				}
+		};
+		class FormNotSignedExeption : public std::exception {
+			public:
+				const char *what() const throw(){
+					return COLORED ? "Form is " RED "not signed" CRESET :
+					"Form is not signed";
 				}
 		};
 };

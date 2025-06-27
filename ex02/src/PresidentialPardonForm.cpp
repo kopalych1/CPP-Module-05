@@ -6,7 +6,7 @@
 /*   By: akostian <akostian@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:42:16 by akostian          #+#    #+#             */
-/*   Updated: 2025/06/27 17:31:06 by akostian         ###   ########.fr       */
+/*   Updated: 2025/06/28 00:34:15 by akostian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
+	if (!this->GetSigned())
+		throw AForm::FormNotSignedExeption();
 	if (executor.GetGrade() > this->GetExecGrade())
 		throw AForm::GradeTooLowException();
 
